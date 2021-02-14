@@ -16,7 +16,7 @@ Cloning Youtube with Vanilla and nodeJS
 - [x] Edit Video
 
 # mongoDB 실행 명령어
-brew services run mongodb-community
-brew services list 
-mongod
+brew services run mongodb-community  
+brew services list  
+mongod  
 mongo
