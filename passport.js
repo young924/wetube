@@ -21,6 +21,7 @@ passport.use(
   )
 );
 
+/*
 passport.use(
   new FacebookStrategy(
     {
@@ -31,6 +32,7 @@ passport.use(
     facebookLoginCallback
   )
 );
+*/
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
