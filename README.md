@@ -19,4 +19,7 @@ Cloning Youtube with Vanilla and nodeJS
 brew services run mongodb-community  
 brew services list  
 mongod  
-mongo
+mongo  
+  
+use db_name  
+db_name.collection_name.method(insert, find, remove, drop)
