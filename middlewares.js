@@ -6,6 +6,7 @@ import routes from "./routes";
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_KEY,
   secretAccessKey: process.env.AWS_PRIVATE_KEY,
+  region: "ap-northeast-2",
 });
 
 const multerVideo = multer({
@@ -25,7 +26,7 @@ const multerAvatar = multer({
 });
 
 export const uploadVideo = multerVideo.single("videoFile");
-export const uploadAvatar = multerAvatar.single("");
+export const uploadAvatar = multerAvatar.single("avatar");
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "WeTube";
