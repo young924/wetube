@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Nayoung Kong",
   "dependencies": {
+    "@babel/cli": "^7.13.0",
     "@babel/core": "^7.11.4",
     "@babel/node": "^7.10.5",
     "@babel/polyfill": "^7.11.5",
@@ -16,6 +17,7 @@
     "body-parser": "^1.19.0",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.3",
     "css-loader": "^1.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -39,9 +41,16 @@
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
-    "dev:server": "nodemon --exec babel-node init.js --delay 2 --ignore '.scss' --ignore 'static' -e js,pug",
-    "dev:assets": "WEBPACK_ENV=development webpack -w",
-    "build:assets": "WEBPACK_ENV=production webpack"
+    "dev:server": "nodemon --exec babel-node src/init.js --delay 2 --ignore '.scss' --ignore 'static'",
+    "dev:assets": "cd src && WEBPACK_ENV=development webpack -w",
+    "build:assets": "cd src && WEBPACK_ENV=production webpack",
+    "build:server": "babel src --out-dir build --ignore 'src/assets', 'src/static', 'src/webpack.config.js'",
+    "copyAll": "cp -R src/static build && cp -R src/views build",
+    "build": "npm run build:server && npm run build:assets && npm run copyAll",
+    "prebuild": "rm -rf build",
+    "tunnel": "lt --port 4000",
+    "start": "node build/init.js",
+    "prestart": "npm run build"
   },
   "devDependencies": {
     "eslint": "^7.7.0",
