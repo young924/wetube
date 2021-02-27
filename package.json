@@ -5,8 +5,8 @@
   "main": "index.js",
   "author": "Nayoung Kong",
   "engines": {
-    "node": "12.x",
-    "npm": "6.x"
+    "node": "12.18.3",
+    "npm": "6.14.6"
   },
   "dependencies": {
     "@babel/cli": "^7.13.0",
