@@ -28,10 +28,21 @@ globalRouter.get(routes.home, home);
 globalRouter.get(routes.search, search);
 globalRouter.get(routes.logout, onlyPrivate, logout);
 
-globalRouter.get(routes.gitHub, githubLogin);
+globalRouter.get(
+  routes.gitHub,
+  (req, res, next) => {
+    console.log(process.env.PRODUCTION);
+    next();
+  },
+  githubLogin
+);
 
 globalRouter.get(
   routes.githubCallback,
+  (req, res, next) => {
+    console.log("here");
+    next();
+  },
   passport.authenticate("github", { failureRedirect: "/login" }),
   postGithubLogIn
 );
